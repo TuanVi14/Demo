@@ -1,0 +1,32 @@
+@model Demo.Models.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" name="Name" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input class="form-control" name="Price" value="@Model.Price" />
+    </div>
+    <div class="form-group">
+        <label>Current Image</label>
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <div><img src="@Model.Image" style="max-width:150px;" /></div>
+        }
+    </div>
+    <div class="form-group">
+        <label>Replace Image</label>
+        <input class="form-control" type="file" name="imageFile" />
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" href="/Admin">Back</a>
+</form>

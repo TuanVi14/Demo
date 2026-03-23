@@ -1,0 +1,23 @@
+﻿<div class="container mt-5" style="max-width:400px;">
+    <h2 class="text-center">Đăng nhập</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+    </form>
+
+    <p class="text-danger mt-2">@ViewBag.Error</p>
+
+    <div class="text-center mt-3">
+        <a href="/Account/Register">Chưa có tài khoản? Đăng ký</a>
+    </div>
+</div>

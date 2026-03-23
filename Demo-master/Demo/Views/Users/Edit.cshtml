@@ -1,0 +1,30 @@
+@model Demo.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h2>Edit User</h2>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" value="@Model.Username" disabled />
+    </div>
+    <div class="form-group">
+        <label>New Password (leave blank to keep)</label>
+        <input class="form-control" type="password" name="password" />
+    </div>
+    <div class="form-group">
+        <label>Roles</label>
+        <div>
+            @{ var roles = (Model.Roles ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries); }
+            <label class="me-2"><input type="checkbox" name="roles" value="Admin" @(roles.Contains("Admin")?"checked":"") /> Admin</label>
+            <label class="me-2"><input type="checkbox" name="roles" value="User" @(roles.Contains("User")?"checked":"") /> User</label>
+            <label class="me-2"><input type="checkbox" name="roles" value="Manager" @(roles.Contains("Manager")?"checked":"") /> Manager</label>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" href="/Users">Back</a>
+</form>
