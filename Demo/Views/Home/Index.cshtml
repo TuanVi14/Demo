@@ -1,14 +1,11 @@
 ﻿@model List<Demo.Models.Product>
 
-<h2>Danh sách sản phẩm</h2>
+<h2>Trang chủ</h2>
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
-            <img src="@item.Image" width="150" />
-            <h4>@item.Name</h4>
-            <p>@item.Price VNĐ</p>
-        </div>
-    }
+<!-- BANNER -->
+<div class="hero-banner">
+    <div class="overlay">
+        <h1>Shop Thời Trang Nam</h1>
+        <p>Phong cách - Trẻ trung - Giá tốt</p>
+    </div>
 </div>
