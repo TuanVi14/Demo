@@ -15,10 +15,7 @@ namespace Demo.Controllers
 
         public IActionResult Index()
         {
-<<<<<<< HEAD
 
-=======
->>>>>>> 461bfdba4bfdacf7c991ce4bd8b8e49b293e0bb0
             return View();
         }
 
