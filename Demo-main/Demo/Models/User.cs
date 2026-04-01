@@ -6,10 +6,14 @@ namespace Demo.Models;
 public class User
 {
     public int Id { get; set; }
-    public string Username { get; set; }
-    public string PasswordHash { get; set; }
+    public string Username { get; set; } = string.Empty;
+    public string PasswordHash { get; set; } = string.Empty;
     // Comma-separated roles, e.g. "Admin,Manager"
-    public string Roles { get; set; }
+    public string Roles { get; set; } = string.Empty;
+    // Customer address
+    public string Address { get; set; } = string.Empty;
+    // Customer group (e.g. "Regular", "VIP", "Wholesale")
+    public string CustomerGroup { get; set; } = "Regular";
 
     public IEnumerable<string> GetRoleList()
     {

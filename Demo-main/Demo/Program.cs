@@ -45,7 +45,9 @@ using (var scope = app.Services.CreateScope())
         {
             Username = "admin",
             PasswordHash = Demo.Models.User.HashPassword("123"),
-            Roles = "Admin"
+            Roles = "Admin",
+            Address = "Admin HQ",
+            CustomerGroup = "VIP"
         });
         db.SaveChanges();
     }

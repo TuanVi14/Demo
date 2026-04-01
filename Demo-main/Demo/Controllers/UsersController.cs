@@ -27,7 +27,7 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(string username, string password, string[]? roles)
+    public IActionResult Create(string username, string password, string[]? roles, string? address, string? customerGroup)
     {
         if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
         {
@@ -45,7 +45,9 @@ public class UsersController : Controller
         {
             Username = username,
             PasswordHash = Demo.Models.User.HashPassword(password),
-            Roles = (roles == null || roles.Length == 0) ? "User" : string.Join(',', roles)
+            Roles = (roles == null || roles.Length == 0) ? "User" : string.Join(',', roles),
+            Address = address ?? string.Empty,
+            CustomerGroup = string.IsNullOrWhiteSpace(customerGroup) ? "Regular" : customerGroup
         };
         _db.Users.Add(user);
         _db.SaveChanges();
@@ -60,7 +62,7 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public IActionResult Edit(int id, string? password, string[]? roles)
+    public IActionResult Edit(int id, string? password, string[]? roles, string? address, string? customerGroup)
     {
         var u = _db.Users.FirstOrDefault(x => x.Id == id);
         if (u == null) return NotFound();
@@ -69,6 +71,8 @@ public class UsersController : Controller
             u.PasswordHash = Demo.Models.User.HashPassword(password);
         }
         u.Roles = (roles == null || roles.Length == 0) ? "User" : string.Join(',', roles);
+        u.Address = address ?? u.Address;
+        u.CustomerGroup = string.IsNullOrWhiteSpace(customerGroup) ? u.CustomerGroup : customerGroup;
         _db.SaveChanges();
         return RedirectToAction(nameof(Index));
     }
