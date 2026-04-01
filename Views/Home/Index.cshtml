@@ -1,0 +1,192 @@
+﻿@model List<Demo.Models.Product>
+
+@{
+    ViewData["Title"] = "Shop Quần Aó Thời Trang";
+}
+
+<!-- HERO BANNER -->
+<div class="hero-section">
+    <div class="hero-overlay">
+        <h1 class="hero-title">Shop Quần Aó Thời Trang</h1>
+        <p class="hero-subtitle">fashion collection</p>
+    </div>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<section class="featured-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/350/cccccc/666666?text=Featured+Collection" alt="Featured" class="featured-img">
+            </div>
+            <div class="col-md-6">
+                <div class="featured-products">
+                    <div class="featured-item">
+                        <img src="https://via.placeholder.com/150/ffffff/000000?text=Item+1" alt="Product">
+                    </div>
+                    <div class="featured-item">
+                        <img src="https://via.placeholder.com/150/0066cc/ffffff?text=Item+2" alt="Product">
+                    </div>
+                    <div class="featured-item">
+                        <img src="https://via.placeholder.com/150/663300/ffffff?text=Item+3" alt="Product">
+                    </div>
+                    <div class="featured-item">
+                        <img src="https://via.placeholder.com/150/0099ff/ffffff?text=Item+4" alt="Product">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FLASH SALE SECTION -->
+<section class="products-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Flash Sale!</h2>
+            <span class="sale-badge">Hot</span>
+        </div>
+        <div class="row">
+            @foreach(var product in Model.Where(p => p.Category == "Flash Sale").Take(4))
+            {
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="@product.Image" alt="@product.Name" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5>@product.Name</h5>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="review-count">@product.Reviews</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price">₫@product.Price.ToString("N0")</span>
+                            </div>
+                            <button class="btn btn-primary btn-block mt-2">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- TREND LUXE SECTION -->
+<section class="products-section bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Trend Luxe</h2>
+            <span class="sale-badge">New</span>
+        </div>
+        <div class="row">
+            @foreach(var product in Model.Where(p => p.Category == "Trend Luxe").Take(4))
+            {
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="@product.Image" alt="@product.Name" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5>@product.Name</h5>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="review-count">@product.Reviews</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price">₫@product.Price.ToString("N0")</span>
+                            </div>
+                            <button class="btn btn-primary btn-block mt-2">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- HOT TREND SECTION -->
+<section class="products-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Thời Trang Hot Trend</h2>
+            <span class="sale-badge">Trending</span>
+        </div>
+        <div class="row">
+            @foreach(var product in Model.Where(p => p.Category == "Hot Trend"))
+            {
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="@product.Image" alt="@product.Name" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5>@product.Name</h5>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="review-count">@product.Reviews</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price">₫@product.Price.ToString("N0")</span>
+                            </div>
+                            <button class="btn btn-primary btn-block mt-2">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- CUSTOMER REVIEWS SECTION -->
+<section class="reviews-section">
+    <div class="container text-center">
+        <h2>Khách hàng đánh giá</h2>
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <h5>Chất lượng tốt</h5>
+                    <p>Toàn bộ sản phẩm đều được lựa chọn kỹ lưỡng để đảm bảo chất lượng cao nhất.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <h5>Giao hàng nhanh</h5>
+                    <p>Chúng tôi cam kết giao hàng trong vòng 2-3 ngày làm việc cho toàn bộ đơn hàng.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <h5>Hỗ trợ 24/7</h5>
+                    <p>Đội ngũ hỗ trợ khách hàng sẵn sàng giúp đỡ bạn bất cứ lúc nào.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INSTAGRAM SECTION -->
+<section class="instagram-section">
+    <div class="container text-center">
+        <h2>@("@Instagram")</h2>
+        <div class="row mt-4">
+            @for(int i = 1; i <= 6; i++)
+            {
+                <div class="col-md-2 col-sm-4 col-6 mb-3">
+                    <div class="insta-item">
+                        <img src="https://via.placeholder.com/150/333333/ffffff?text=Instagram+@i" alt="Instagram">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

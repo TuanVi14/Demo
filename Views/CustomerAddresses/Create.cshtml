@@ -1,0 +1,46 @@
+@model Demo.Models.CustomerAddress
+
+@{
+    ViewData["Title"] = "Create Customer Address";
+}
+
+<h2>Create Customer Address</h2>
+
+<form method="post">
+    <div class="form-group mb-2">
+        <label>Customer</label>
+        @Html.DropDownListFor(model => model.UserId, (SelectList)ViewBag.UserList, "Select customer", new { @class = "form-control" })
+    </div>
+    <div class="form-group mb-2">
+        <label>Address</label>
+        <input class="form-control" name="AddressLine" value="@Model.AddressLine" />
+    </div>
+    <div class="form-group mb-2">
+        <label>City</label>
+        <input class="form-control" name="City" value="@Model.City" />
+    </div>
+    <div class="form-group mb-2">
+        <label>State</label>
+        <input class="form-control" name="State" value="@Model.State" />
+    </div>
+    <div class="form-group mb-2">
+        <label>Postal Code</label>
+        <input class="form-control" name="PostalCode" value="@Model.PostalCode" />
+    </div>
+    <div class="form-group mb-2">
+        <label>Country</label>
+        <input class="form-control" name="Country" value="@Model.Country" />
+    </div>
+    <button class="btn btn-primary" type="submit">Create</button>
+    <a class="btn btn-secondary" href="/CustomerAddresses">Back</a>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger mt-2">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@error.ErrorMessage</div>
+        }
+    </div>
+}

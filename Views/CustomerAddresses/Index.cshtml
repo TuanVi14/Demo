@@ -1,0 +1,55 @@
+@model List<Demo.Models.CustomerAddress>
+
+@{
+    ViewData["Title"] = "Customer Addresses";
+}
+
+<h2>Customer Addresses</h2>
+
+<p>
+    <a class="btn btn-primary" href="/CustomerAddresses/Create@(ViewBag.CurrentUserId != null ? "?userId=" + ViewBag.CurrentUserId : "")">Create Address</a>
+    <a class="btn btn-secondary" href="/Users">Back to Customers</a>
+</p>
+
+@if (ViewBag.CurrentUserId != null)
+{
+    <div class="mb-3">
+        <strong>Customer:</strong> @ViewBag.CurrentUserName
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Customer</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var address in Model)
+    {
+        <tr>
+            <td>@address.Id</td>
+            <td>@address.User?.Username</td>
+            <td>@address.AddressLine</td>
+            <td>@address.City</td>
+            <td>@address.State</td>
+            <td>@address.PostalCode</td>
+            <td>@address.Country</td>
+            <td>
+                <a class="btn btn-sm btn-secondary" href="/CustomerAddresses/Edit/@address.Id">Edit</a>
+                <form asp-action="Delete" method="post" style="display:inline">
+                    <input type="hidden" name="id" value="@address.Id" />
+                    <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
